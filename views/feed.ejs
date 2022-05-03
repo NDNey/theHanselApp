@@ -7,11 +7,9 @@
   <title>The Hansel App</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-  <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container">
@@ -48,6 +46,20 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
+    </div>
+
+    <div class="feed-container">
+      <% posts.forEach(post => {%>
+        <div class="card">
+          <img src="<%= post.photo%>" alt="photo of <%= post.title%>" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title%></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= post.title%></h6>
+            <p class="card-text"><%= post.description%></p>
+            <i class="bi bi-plus-circle bid"></i>
+          </div>
+        </div>
+      <% }) %>
     </div>
   </div>
 

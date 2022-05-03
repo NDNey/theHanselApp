@@ -5,7 +5,8 @@ const cloudinary = require("../middleware/cloudinary");
 module.exports = {
     getPosts: async (req, res) => {
       try {
-        res.render('feed.ejs')
+        const posts = await Post.find()
+        res.render('feed.ejs', {posts: posts})
       }
       catch(err) {
         console.error(err)
@@ -30,7 +31,8 @@ module.exports = {
                 bidTime:body.bidTime,
 
             });
-            console.log("Post has been created!");
+          
+            res.redirect('/feed')
           } catch (err) {
              
             console.log(err);

@@ -1,0 +1,8 @@
+.feed-container {
+  display: flex;
+}
+
+.card  {
+  width: 18rem;
+  display: flex;
+}
