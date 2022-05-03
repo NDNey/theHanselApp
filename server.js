@@ -7,6 +7,7 @@ const { auth } = require("express-openid-connect");
 const {authConfig} = require('./config/auth')
 const homeRoutes = require('./routes/home')
 const postRoutes = require('./routes/post')
+const profileRoutes = require('./routes/profile')
 
 require('dotenv').config({ path: './config/.env'})
 
@@ -24,6 +25,7 @@ app.use(methodOverride('_method'))
 
 app.use('/', homeRoutes)
 app.use('/feed', postRoutes)
+app.use('/profile', profileRoutes)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`)
