@@ -5,10 +5,11 @@ const Post = require("../models/Post");
 module.exports = {
     getPosts: async (req, res) => {
 
-    const user =  req.oidc.user
-
       try {
-        res.render('profile.ejs',{user})
+        const user = await User.findOne({email: req.oidc.user.email})
+        const posts = await Post.find({userId: user._id})
+  
+        res.render('profile.ejs', {posts: posts, user:user})
       }
       catch(err) {
         console.error(err)
@@ -16,3 +17,4 @@ module.exports = {
     }
   
 }
+//<% if(post.userId == ) {%>

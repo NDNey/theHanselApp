@@ -1,0 +1,24 @@
+<div class="feed-container">
+  <% posts.forEach(post => {%>
+    <div class="card">
+      <img src="<%= post.photo%>" alt="photo of <%= post.title%>" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title"><%= post.title%></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= post.title%></h6>
+        <p class="card-text"><%= post.description%></p>
+        <h6 class="card-subtitle mb-2 text-muted"><%= post.bids.length%> Bids</h6>
+        <form action="/feed/<%= post._id%>?_method=PUT" method="POST">
+          <button type="submit">
+            <% if(post.userId == user._id) {%>
+              edit
+              <i class="bi bi-pencil-square"></i>
+              <% } else {%>
+            Bid
+            <i class="bi bi-plus-circle bid"></i>
+            <% } %>
+          </button>
+      </form>
+      </div>
+    </div>
+  <% }) %>
+</div>
