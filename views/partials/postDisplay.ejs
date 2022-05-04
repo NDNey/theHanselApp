@@ -7,17 +7,32 @@
         <h6 class="card-subtitle mb-2 text-muted"><%= post.title%></h6>
         <p class="card-text"><%= post.description%></p>
         <h6 class="card-subtitle mb-2 text-muted"><%= post.bids.length%> Bids</h6>
+
+        
+        <% if(post.userId == user._id) {%>
+            <a href="/feed/edit/<%= post._id%>" >
+                <i class="bi bi-pencil-square edit"></i>
+            </a>
+            <form action="/feed/get-winner/<%= post._id%>?_method=PUT" method="POST">
+              <button type="submit">
+                Pick Winner
+                <i class="bi bi-check2-square"></i>
+              </button>
+            </form>
+            <form action="/feed/<%= post._id%>?_method=DELETE" method="POST">
+              <button type="submit">
+                Delete
+                <i class="bi bi-trash"></i>
+              </button>
+            </form>
+         <% } else {%>
         <form action="/feed/<%= post._id%>?_method=PUT" method="POST">
           <button type="submit">
-            <% if(post.userId == user._id) {%>
-              edit
-              <i class="bi bi-pencil-square"></i>
-              <% } else {%>
             Bid
             <i class="bi bi-plus-circle bid"></i>
-            <% } %>
           </button>
-      </form>
+        </form>
+      <% } %>
       </div>
     </div>
   <% }) %>

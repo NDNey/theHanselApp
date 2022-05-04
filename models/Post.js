@@ -14,7 +14,7 @@ const PostSchema = new mongoose.Schema({
     description:{
         type:String,
     },
-    // AI implementatio for tags || logic for manual add
+    // AI implementation for tags || logic for manual add
     tags:{
         type:Array,
     },
@@ -38,6 +38,9 @@ const PostSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    winner: {
+        type: String
+    }
     
 
 })

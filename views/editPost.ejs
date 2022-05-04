@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hansel App</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+  <h1>Hi I am Edit Post</h1>
+
+<div class="form-container">
+  <form action="/feed/edit/<%= post._id%>?_method=PUT" enctype="multipart/form-data" method="POST" >
+    <div class="form-group">
+      <label for="title">Enter Title</label>
+      <input type="text" name="title" id="" class="form-control"  value="<%= post.title%>">
+    </div>      
+    <div class="form-group">
+      <label for="photo">Current Photo. Upload new photo below to change</label>
+      <img src="<%= post.photo%>" alt="photo of <%= post.title%>">
+      <input type="file" name="photo" id="" class="form-control" value="<%= post.photo%>">
+    </div>
+    <div class="form-group">
+      <label for="description">Tell us about the item (color, dimensions, condition etc.)</label>
+      <textarea name="description" id="" class="form-control" cols="30" rows="10"><%= post.description%></textarea>
+    </div>
+    <div class="form-group">
+      <label for="tags">Enter tags for the item separated by commas</label>
+      <textarea name="tags" id="tags" class="form-control" cols="30" rows="10"><%= post.tags%></textarea>
+    </div>
+    <div class="form-group">
+      <label for="location">Enter City, State</label>
+      <input type="text" name="location" id="" class="form-control" value="<%= post.location%>">
+    </div>
+    <div class="form-group">
+      <label for="bidTime">Bid Ends at: <%= post.bidTime%></label>
+      <input type="datetime-local" name="bidTime" id="" class="form-control" value="<%= post.bidTime%>">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

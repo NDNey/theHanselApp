@@ -17,4 +17,4 @@ module.exports = {
     }
   
 }
-//<% if(post.userId == ) {%>
+//
