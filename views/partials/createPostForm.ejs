@@ -4,6 +4,7 @@
   </button>
   <div class="dropdown-menu form-container" aria-labelledby="dropdownMenuButton">
     <form action="/feed/create/<%= user._id%>" enctype="multipart/form-data" method="POST" class="px-4 py-3">
+      <h3 id="createPostHeading">Create Post</h3>
       <div class="form-group">
         <label for="title">Enter Title</label>
         <input type="text" name="title" id="" class="form-control">
@@ -14,11 +15,11 @@
       </div>
       <div class="form-group">
         <label for="description">Tell us about the item (color, dimensions, condition etc.)</label>
-        <textarea name="description" id="" class="form-control" cols="30" rows="10" placeholder="Enter description of the item you are giving"></textarea>
+        <textarea name="description" id="" class="form-control formTextarea" cols="30" rows="2" placeholder="Enter description of the item you are giving"></textarea>
       </div>
       <div class="form-group">
         <label for="tags">Enter tags for the item separated by commas</label>
-        <textarea name="tags" id="tags" class="form-control" cols="30" rows="10" placeholder="Enter tags separated by commas"></textarea>
+        <textarea name="tags" id="tags" class="form-control formTextarea" cols="30" rows="2" placeholder="Enter tags separated by commas"></textarea>
       </div>
       <div class="form-group">
         <label for="location">Enter City, State</label>

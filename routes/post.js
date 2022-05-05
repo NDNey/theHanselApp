@@ -3,6 +3,8 @@ const router = express.Router()
 const postController = require('../controllers/post')
 const upload = require("../middleware/multer");
 
+    
+
 router.get('/', postController.getPosts)
 router.get('/edit/:id', postController.getEditForm)
 router.post('/create/:id', upload.single("photo"), postController.createPost)
