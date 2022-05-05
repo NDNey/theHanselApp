@@ -8,7 +8,7 @@ router.get('/edit/:id', postController.getEditForm)
 router.post('/create/:id', upload.single("photo"), postController.createPost)
 router.put('/:id', postController.makeBid)
 router.put('/edit/:id', upload.single("photo"), postController.editPost)
-router.put('get-winner/:id', postController.getWinner)
+router.put('/get-winner/:id', postController.getWinner)
 router.delete('/:id', postController.deletePost)
 
 

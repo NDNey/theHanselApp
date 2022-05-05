@@ -1,3 +1,66 @@
+
+
+
+<div class="container mt-2">
+  <div class="row">
+  <% posts.forEach(post => {%>
+   
+      <div class="col-md-3 col-sm-6">
+        <div class="card card-block">
+        <h4 class="card-title text-right"><i class="bi bi-gear-fill">settings</i></h4>
+      <img  src="<%= post.photo%>" alt="photo of <%= post.title%>" >
+          <h5 class="card-title mt-3 mb-3"><%= post.title%></h5>
+          <p class="card-text"><%= post.description%></p> 
+          <h6 class="card-subtitle mb-2 text-muted"><%= post.bids.length%> Bids</h6>
+    
+          <% if(post.userId == user._id) {%>
+            <a href="/feed/edit/<%= post._id%>" >
+                <i class="bi bi-pencil-square edit">Edit</i>
+            </a>
+            <form action="/feed/<%= post._id%>?_method=DELETE" method="POST">
+              <button type="submit">
+                Delete
+                <i class="bi bi-trash"></i>
+              </button>
+            </form>
+            <% if(post.isAvailable && post.bids.length > 0) {%>
+              <form action="/feed/get-winner/<%= post._id%>?_method=PUT" method="POST">
+                <button type="submit">
+                  Pick Winner
+                  <i class="bi bi-check2-square"></i>
+                </button>
+              </form>
+            <% } %>
+             <% } else {%>
+              <% if(post.isAvailable && post.bids.indexOf(user._id) == -1) {%>
+                <form action="/feed/<%= post._id%>?_method=PUT" method="POST">
+                  <button type="submit">
+                    Bid
+                    <i class="bi bi-plus-circle bid"></i>
+                  </button>
+                </form>
+              <% } %>
+            <% } %>
+           
+      </div>
+    </div>
+  
+   
+    <% }) %>
+  </div>
+</div>
+
+
+
+
+ 
+
+
+
+
+<!-- 
+
+
 <div class="feed-container">
   <% posts.forEach(post => {%>
     <div class="card">
@@ -7,33 +70,37 @@
         <h6 class="card-subtitle mb-2 text-muted"><%= post.title%></h6>
         <p class="card-text"><%= post.description%></p>
         <h6 class="card-subtitle mb-2 text-muted"><%= post.bids.length%> Bids</h6>
-
+    
         
-        <% if(post.userId == user._id) {%>
-            <a href="/feed/edit/<%= post._id%>" >
-                <i class="bi bi-pencil-square edit"></i>
-            </a>
-            <form action="/feed/get-winner/<%= post._id%>?_method=PUT" method="POST">
-              <button type="submit">
-                Pick Winner
-                <i class="bi bi-check2-square"></i>
-              </button>
-            </form>
-            <form action="/feed/<%= post._id%>?_method=DELETE" method="POST">
-              <button type="submit">
-                Delete
-                <i class="bi bi-trash"></i>
-              </button>
-            </form>
-         <% } else {%>
-        <form action="/feed/<%= post._id%>?_method=PUT" method="POST">
+      <% if(post.userId == user._id) {%>
+        <a href="/feed/edit/<%= post._id%>" >
+            <i class="bi bi-pencil-square edit">Edit</i>
+        </a>
+        <form action="/feed/<%= post._id%>?_method=DELETE" method="POST">
           <button type="submit">
-            Bid
-            <i class="bi bi-plus-circle bid"></i>
+            Delete
+            <i class="bi bi-trash"></i>
           </button>
         </form>
-      <% } %>
+        <% if(post.isAvailable && post.bids.length > 0) {%>
+          <form action="/feed/get-winner/<%= post._id%>?_method=PUT" method="POST">
+            <button type="submit">
+              Pick Winner
+              <i class="bi bi-check2-square"></i>
+            </button>
+          </form>
+        <% } %>
+         <% } else {%>
+          <% if(post.isAvailable && post.bids.indexOf(user._id) == -1) {%>
+            <form action="/feed/<%= post._id%>?_method=PUT" method="POST">
+              <button type="submit">
+                Bid
+                <i class="bi bi-plus-circle bid"></i>
+              </button>
+            </form>
+          <% } %>
+        <% } %>
       </div>
     </div>
   <% }) %>
-</div>
+</div> -->

@@ -3,6 +3,7 @@ const Post = require("../models/Post");
 const User = require("../models/User");
 const cloudinary = require("../middleware/cloudinary");
 const computerVisionClient =  require("../middleware/imageAnalizer");
+const {Draft,nylas} =  require("../middleware/email");
 
 
 module.exports = {
@@ -110,22 +111,42 @@ module.exports = {
       }
     },
     getWinner: async (req, res) => {
+
+     
+
+  
+
+      const body = req.body
       const currentPost = await Post.findOne({_id: req.params.id})
-      // const currentUser = await User.findOne({_id: currentPost.bids[winnerIndex]})
+      let winUser
       let winnerIndex
 
-      if(currentPost.bids.length) {
-        winnerIndex = Math.random * currentPost.bids.length - 1
+      if(currentPost.bids.length > 0) {
+        winnerIndex = Math.floor(Math.random() * (currentPost.bids.length - 1))
       }
 
+       winUser = await User.findOne({_id: currentPost.bids[winnerIndex]})
+
       try {
+        console.log('winner index', winnerIndex)
+        console.log('winnerId', currentPost.bids[winnerIndex])
+        console.log('winnerName', winUser.email)
         await Post.findOneAndUpdate({_id: req.params.id}, {
           $set:{
-            // currently showing the id of the winner in the post.winner property
-            // can be modified tomorrow to show 
-            winner: body.bids[winnerIndex],
+            winnerId: currentPost.bids[winnerIndex],
+            winnerName: winUser.email, //change to name
             isAvailable: false
           }}) 
+
+          const winnerEmail = new Draft(nylas, {
+            subject: 'With Love, from Hansel',
+            body: `Congratulations you won ${currentPost.title}. Thank you for being part of The Hansel Community! To claim your item contact ${req.oidc.user.nickname} at ${req.oidc.user.email} within 24 hours to finalize pick up details` ,
+            to: [{ name: 'Hansel User', email: winUser.email }]
+          });
+
+          winnerEmail.send().then(message => {
+            console.log(`${message.id} was sent`);
+        });    
 
           res.redirect('/profile')       
 

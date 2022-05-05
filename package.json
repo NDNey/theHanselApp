@@ -11,7 +11,8 @@
     "express-openid-connect": "^2.7.2",
     "method-override": "^3.0.0",
     "mongoose": "^6.3.2",
-    "multer": "^1.4.4"
+    "multer": "^1.4.4",
+    "nylas": "^6.3.2"
   },
   "name": "thehanselapp",
   "version": "1.0.0",
