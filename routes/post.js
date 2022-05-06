@@ -5,7 +5,9 @@ const upload = require("../middleware/multer");
 
 const { useSocket } = require("../middleware/socket");
 
-router.get("/", useSocket, postController.getPosts);
+const { requiresAuth } = require("express-openid-connect");
+
+router.get("/",requiresAuth(), useSocket, postController.getPosts);
 router.get("/edit/:id", postController.getEditForm);
 router.post("/create/:id", upload.single("photo"), postController.createPost);
 router.put("/:id", postController.makeBid);

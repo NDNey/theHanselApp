@@ -38,7 +38,7 @@ body {
 /* BASE STYLES
 /*******************************************/
 /* //////nav/// */
-#navText , * {
+#navText {
   font-family: "Libre Baskerville", serif;
 }
 
