@@ -12,12 +12,9 @@ const userSchema = new mongoose.Schema({
   },
   username: {
     type: String,
-    required: true,
-    unique: true
   },
   location: {
     type: String,
-    required: true
   },
   profilePhoto: String, //placeholder for Auth0 photo
   bio: String,

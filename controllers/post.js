@@ -4,6 +4,7 @@ const User = require("../models/User");
 const cloudinary = require("../middleware/cloudinary");
 const computerVisionClient =  require("../middleware/imageAnalizer");
 const {Draft,nylas} =  require("../middleware/email");
+// const { useSocket } = require("../middleware/socket");
 
 
 module.exports = {
@@ -11,6 +12,10 @@ module.exports = {
       try {
         const posts = await Post.find()
         const user = await User.findOne({email: req.oidc.user.email})
+        const result = {
+          data: posts,
+        };
+        // useSocket.socketIo.emit("update", result);
         res.render('feed.ejs', {posts: posts, user:user})
       }
       catch(err) {
@@ -30,14 +35,20 @@ module.exports = {
           visualFeatures: ['Objects'],
         })
       ).objects;
-      console.log('objects!!!!', objects);
+    let tags =[]
+    objects.forEach(e=> {
+      if(!tags.includes(e.object)){
+        tags.push(e.object)
+      }
+    })
+      console.log('objects!!!!', tags);
       // cloudinaryId: photo.public_id,
       // console.log(req.params.id)
             await Post.create({
                 title:body.title,
                 photo:photo.secure_url,
                 description:body.description,
-                tags:body.tags,
+                tags:tags,
                 location:body.location,
                 bidTime:body.bidTime,
                 userId:req.params.id

@@ -14,7 +14,7 @@ const { requiresAuth } = require("express-openid-connect");
 require('dotenv').config({ path: './config/.env'})
 
 connectDB()
-app.use(auth(authConfig))
+
 
  
 
@@ -26,9 +26,11 @@ app.use(express.static('public'))
 app.use(methodOverride('_method'))
 
 app.use('/', homeRoutes)
-app.use('/feed',requiresAuth(), postRoutes)
-app.use('/profile',requiresAuth(), profileRoutes)
+app.use(auth(authConfig))
+app.use('/feed' , postRoutes)
+app.use('/profile', profileRoutes)
 app.use('/search', searchRoutes)
+
 
 
 app.listen(process.env.PORT, () => {
