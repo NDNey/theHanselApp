@@ -30,13 +30,16 @@
   float: left;
   padding: 0 10px 10px 0; /* note the padding around a left floated image */
 }
-
+body {
+  margin: 80px 0 50px 0;
+  font-family: 'Roboto', sans-serif;
+}
 /******************************************
 /* BASE STYLES
 /*******************************************/
 /* //////nav/// */
-#navText {
-  font-family: 'Libre Baskerville', serif;
+#navText , * {
+  font-family: "Libre Baskerville", serif;
 }
 
 #navLogo {
@@ -44,12 +47,12 @@
   width: auto;
 }
 /* //////index page/// */
-#index{
+#index {
   width: 100%;
   height: 100%;
-  background: url('/css/img/hansel-background.png');
+  background: url("/css/img/hansel-background.png");
   background-size: cover;
-  background-repeat: no-repeat
+  background-repeat: no-repeat;
 }
 #getStarted {
   position: relative;
@@ -57,6 +60,9 @@
   left: 25%;
   padding: 1% 4%;
   font-size: 1.5em;
+}
+h2{
+  margin: 20px 0;
 }
 /* //////create post dropdown/// */
 #createPostHeading {
@@ -66,89 +72,80 @@
   overflow: scroll;
 }
 /* //////post/// */
-.col-md-6{
+.col-md-6 {
   margin: 10px 0;
 }
-img{
-  height:250px;
-  width:100%;
+img {
+  height: 250px;
+  width: 100%;
 }
 
 .dropdown-toggle::after {
-  display:none;
+  display: none;
 }
-.delete{
+.delete,.pick{
   border: none;
   background: none;
+  color: rgb(66,146,202);
 }
-.edit{
-  color: black ;
-  
+.edit {
+  color: rgb(66,146,202);
 }
-/* img {      
-  -webkit-transition: all 0.35s ease-in-out;    
-  -moz-transition: all 0.35s ease-in-out;    
-  transition: all 0.35s ease-in-out;     
-  cursor: -webkit-zoom-in;      
-  cursor: -moz-zoom-in;      
-  cursor: zoom-in;  
-  }     
-  
-  img:hover,  
-  img:active,   
-  img:focus {
-  -ms-transform: scale(2.5);    
-  -moz-transform: scale(2.5);  
-  -webkit-transform: scale(2.5);  
-  -o-transform: scale(2.5);  
-  transform: scale(2.5);    
-  position:relative;      
-  z-index:100;  
-  } */
+.bid{
+  border: none;
+  background: none;
+  color: rgb(66,146,202);
+}
+.bid img{
+ width: 40px;
+ height: 40px;
+}
+ #editedImg {
+  width: 10px;
+ }
 
-div [class^="col-"]{
-  padding-left:5px;
-  padding-right:5px;
+div [class^="col-"] {
+  padding-left: 5px;
+  padding-right: 5px;
 }
-.card{
-  transition:0.5s;
-  cursor:pointer;
+.card {
+  transition: 0.5s;
+  cursor: pointer;
 }
-.card-title{  
-  font-size:15px;
-  transition:1s;
-  cursor:pointer;
- 
+.card-title {
+  font-size: 15px;
+  transition: 1s;
+  cursor: pointer;
 }
-.card-title > i{  
-  font-size:15px;
-  transition:1s;
-  cursor:pointer;
-  color:#ffa710
+.card-title > i {
+  font-size: 15px;
+  transition: 1s;
+  cursor: pointer;
+  color: #ffa710;
 }
-.card-title > i:hover{
-  transform: scale(1.25) rotate(100deg); 
-  color:#18d4ca;
-  
+.card-title > i:hover {
+  transform: scale(1.25) rotate(100deg);
+  color: #18d4ca;
 }
-.card:hover{
+.card:hover {
   transform: scale(1.05);
-  box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
 }
-.card-text{
-  height:80px;  
+.card-text {
+  height: 80px;
 }
 
-.card::before, .card::after {
+.card::before,
+.card::after {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   transform: scale3d(0, 0, 1);
-  transition: transform .3s ease-out 0s;
+  transition: transform 0.3s ease-out 0s;
   background: rgba(255, 255, 255, 0.1);
-  content: '';
+  content: "";
   pointer-events: none;
 }
 .card::before {
@@ -157,7 +154,10 @@ div [class^="col-"]{
 .card::after {
   transform-origin: right bottom;
 }
-.card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+.card:hover::before,
+.card:hover::after,
+.card:focus::before,
+.card:focus::after {
   transform: scale3d(1, 1, 1);
 }
 
@@ -168,5 +168,3 @@ div [class^="col-"]{
   flex: 1 1 auto;
   padding: 1.25rem;
 }
-
- 

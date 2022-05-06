@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%- include('./partials/head') %>
   </head>
-<body>
-  <%- include('./partials/nav') %>
+  <body>
+   <div class="container">
+    <%- include('./partials/nav') %>
 
-    <h1>I am your profile</h1>
-     
-    <h1><%= user.email %></h1>
+    <h1><%= authUser.nickname%>'s profile</h1>
 
     <%- include('./partials/createPostForm') %>
 
-    <h2>I am you posts:</h2>
-    <%- include('./partials/postDisplay') %>
-
-    <%- include('./partials/footer') %>
-</body>
+    <h2><%= authUser.nickname%>'s Posts</h2>
+    
+    <%- include('./partials/postDisplay') %> <%- include('./partials/footer') %>
+   </div>
+  </body>
 </html>

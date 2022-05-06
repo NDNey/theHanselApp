@@ -1,9 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const profileController = require('../controllers/profile')
+const express = require("express");
+const router = express.Router();
+const profileController = require("../controllers/profile");
 
+router.get("/", profileController.getPosts);
 
-router.get('/', profileController.getPosts)
- 
-
-module.exports = router
+module.exports = router;

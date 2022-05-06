@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%- include('./partials/head') %>
-</head>
-<body>
-  
-  <h1>Hi I am Edit Post</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('./partials/head') %>
+  </head>
+  <body>
+   <div class="container">
+    <h1>Edit your post</h1>
+    <div class="form-container col-md-6 col-sm-6">
+      <form action="/feed/edit/<%= post._id%>?_method=PUT" enctype="multipart/form-data" method="POST">
+        <div class="form-group">
+          <label for="title">Enter Title</label>
+          <input type="text" name="title" id="" class="form-control" value="<%= post.title%>" />
+        </div>
+        <img  class="img-thumbnail" src="<%= post.photo%>" alt="photo of <%= post.title%>" />
+        <div class="form-group">
+          <label for="photo">Current Photo. Upload new photo below to change</label>
+        
+          <input type="file" name="photo" id="" class="form-control" value="<%= post.photo%>" />
+        </div>
+        <div class="form-group">
+          <label for="description">Tell us about the item (color, dimensions, condition etc.)</label>
+          <textarea name="description" id="" class="form-control" cols="30" rows="5"><%= post.description%></textarea>
+        </div>
+        <div class="form-group">
+          <label for="location">Enter new City, State to change</label>
+          <input type="text" name="location" id="" class="form-control" value="<%= post.location%>" />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
 
-  <div class="form-container">
-    <form action="/feed/edit/<%= post._id%>?_method=PUT" enctype="multipart/form-data" method="POST" >
-      <div class="form-group">
-        <label for="title">Enter Title</label>
-        <input type="text" name="title" id="" class="form-control"  value="<%= post.title%>">
-      </div>      
-      <div class="form-group">
-        <label for="photo">Current Photo. Upload new photo below to change</label>
-        <img src="<%= post.photo%>" alt="photo of <%= post.title%>">
-        <input type="file" name="photo" id="" class="form-control" value="<%= post.photo%>">
-      </div>
-      <div class="form-group">
-        <label for="description">Tell us about the item (color, dimensions, condition etc.)</label>
-        <textarea name="description" id="" class="form-control" cols="30" rows="10"><%= post.description%></textarea>
-      </div>
-      <div class="form-group">
-        <label for="tags">Enter tags for the item separated by commas</label>
-        <textarea name="tags" id="tags" class="form-control" cols="30" rows="10"><%= post.tags%></textarea>
-      </div>
-      <div class="form-group">
-        <label for="location">Enter City, State</label>
-        <input type="text" name="location" id="" class="form-control" value="<%= post.location%>">
-      </div>
-      <div class="form-group">
-        <label for="bidTime">Bid Ends at: <%= post.bidTime%></label>
-        <input type="datetime-local" name="bidTime" id="" class="form-control" value="<%= post.bidTime%>">
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-  </div>
-
-<%- include('./partials/footer') %>
-</body>
+   </div>
+    <%- include('./partials/footer') %>
+  </body>
 </html>
