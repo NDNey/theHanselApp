@@ -29,6 +29,6 @@ app.use("/feed", postRoutes);
 app.use("/profile", profileRoutes);
 app.use("/search", searchRoutes);
 
-httpServer.listen(process.env.PORT, () => {
+httpServer.listen(process.env.PORT || 8000, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
